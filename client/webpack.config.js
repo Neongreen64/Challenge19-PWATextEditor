@@ -17,50 +17,54 @@ module.exports = () => {
     plugins: [
       // Add HtmlWebpackPlugin to generate HTML files
       new HtmlWebpackPlugin({
-        template: './src/index.html', 
+        template: './index.html', 
         filename: 'index.html', 
-        chunks: ['main'], 
+        favicon: './favicon.ico', 
       }),
+      // Add InjectManifest for service worker configuration
+        new InjectManifest({
+          swSrc: './src-sw.js', 
+          swDest: 'src-sw.js', 
+          }),
+          
 
       // Add WebpackPwaManifest to generate a web app manifest file
       new WebpackPwaManifest({
-        filename: 'manifest.json',
         name: 'Just Another Text Editor',
         short_name: 'JATE',
         description: 'Another text editor for you to use!',
         background_color: '#ffffff',
         theme_color: '#ffffff',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'), 
             sizes: [96, 128, 192, 256, 384, 512], 
+            destination: path.join('assets', 'icons'),
           },
         ],
       }),
-
-      // Add InjectManifest for service worker configuration
-      new InjectManifest({
-        swSrc: './src/sw.js', 
-        swDest: 'sw.js', 
-      }),
     ],
+
 
     module: {
       rules: [
         // Add CSS loader rule
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
 
         // Add Babel loader rule
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
