@@ -11,7 +11,7 @@ Your task is to build a text editor that runs in the browser. The app will be a 
 - [Video](#video)
 
 ## Installation
-No installation needed just download the code and type node index.js in the terminal window.
+No installation needed just visit https://challenge19-pwa-texteditor-2b14818024f9.herokuapp.com/
 
 ## Contributing
 N/A
@@ -27,6 +27,3 @@ Navigate to the project directory and type npm start
 
 ## Questions
 If you have any questions, reach out to me at [GitHub](https://github.com/Neongreen64) or via email at example@gmail.com.
-
-## Video
-<iframe src="https://drive.google.com/file/d/16_owVDI1xtUyJTqs6Pmts-yc9oRKIZRY/view" width="640" height="480"></iframe>
